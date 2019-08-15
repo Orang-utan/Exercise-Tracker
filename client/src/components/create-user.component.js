@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { baseUrl } from "../env";
 
 export default class CreateUser extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ export default class CreateUser extends Component {
     console.log(user);
 
     axios
-      .post("http://localhost:5000/users/add", user)
+      .post(baseUrl + "/users/add", user)
       .then(result => console.log(result.data));
 
     this.setState({

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import { baseUrl } from "../env";
 
 export default class CreateExercises extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ export default class CreateExercises extends Component {
   // react life cycle method, called before anything is displayed
   // kind of like ViewDidLoad
   componentDidMount() {
-    axios.get("http://localhost:5000/users/").then(response => {
+    axios.get(baseUrl + "/users/").then(response => {
       console.log(response.data);
       if (response.data.length > 0) {
         this.setState({
@@ -74,7 +75,7 @@ export default class CreateExercises extends Component {
     console.log(exercise);
 
     axios
-      .post("http://localhost:5000/exercises/add", exercise)
+      .post(baseUrl + "/exercises/add", exercise)
       .then(result => console.log(result.data));
 
     //take user back to home page after submission

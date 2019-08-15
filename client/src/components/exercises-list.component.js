@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { baseUrl } from "../env";
 
 // functional react component
 // lack of state and life cycle methods
@@ -37,7 +38,7 @@ export default class ExercisesList extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/exercises/")
+      .get(baseUrl + "/exercises/")
       .then(response => {
         this.setState({ exercises: response.data });
       })
@@ -46,7 +47,7 @@ export default class ExercisesList extends Component {
 
   deleteExercise(id) {
     axios
-      .delete("http://localhost:5000/exercises/" + id)
+      .delete(baseUrl + "/exercises/" + id)
       .then(response => console.log(response.data));
 
     this.setState({

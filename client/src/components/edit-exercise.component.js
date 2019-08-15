@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import { baseUrl } from "../env";
 
 export default class EditExercise extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ export default class EditExercise extends Component {
   // kind of like ViewDidLoad
   componentDidMount() {
     axios
-      .get("http://localhost:5000/exercises/" + this.props.match.params.id)
+      .get(baseUrl + "/exercises/" + this.props.match.params.id)
       .then(response => {
         this.setState({
           username: response.data.username,
@@ -40,7 +41,7 @@ export default class EditExercise extends Component {
         console.log(error);
       });
 
-    axios.get("http://localhost:5000/users/").then(response => {
+    axios.get(baseUrl + "/users/").then(response => {
       console.log(response.data);
       if (response.data.length > 0) {
         this.setState({
@@ -88,7 +89,7 @@ export default class EditExercise extends Component {
 
     axios
       .post(
-        "http://localhost:5000/exercises/update/" + this.props.match.params.id,
+        baseUrl + "/exercises/update/" + this.props.match.params.id,
         exercise
       )
       .then(result => console.log(result.data));
