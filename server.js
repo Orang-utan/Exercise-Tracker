@@ -34,12 +34,12 @@ app.use("/users", usersRouter);
 ///////////////////////////////////////////////////////////////
 // Ready for Production
 ///////////////////////////////////////////////////////////////
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("client/build"));
-//   app.get("*", (request, response) => {
-//     response.sendFile(path.join(__dirname, "client", "build", "index.html"));
-//   });
-// }
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (request, response) => {
+    response.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  });
+}
 
 ///////////////////////////////////////////////////////////////
 // Testing Function (Runs after Start)
