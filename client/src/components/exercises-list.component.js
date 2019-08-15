@@ -37,6 +37,7 @@ export default class ExercisesList extends Component {
   }
 
   componentDidMount() {
+    console.log(baseUrl);
     axios
       .get(baseUrl + "/exercises/")
       .then(response => {
